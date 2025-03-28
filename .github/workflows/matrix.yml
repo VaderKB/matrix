@@ -10,7 +10,7 @@ jobs:
             matrix:
                 python-version: [3.09, 3.10, 3.13]
                 operating-system: ["ubuntu-latest", "windows-latest"]
-        runs-on: ${{ $matrix.operating-system }}
+        runs-on: ${{ matrix.operating-system }}
         steps:
             - name: Get Code
               uses: actions/checkout@v4
