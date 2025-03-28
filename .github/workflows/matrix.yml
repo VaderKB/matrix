@@ -1,0 +1,27 @@
+name: Matrix demo
+on:
+    push:
+        branches:
+            - main
+run-name: matrix job
+jobs:
+    build:
+        strategy:
+            matrix:
+                python-version: [3.09, 3.10, 3.13]
+                operating-system: ["ubuntu-latest", "windows-latest"]
+        runs-on: ${{ $matrix.operating-system }}
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v4
+            - name: Install python
+              uses: actions/checkout@v4
+              with:
+                python-version: ${{ matrix.python-version }}
+            - name: Install packages
+              run: |
+                pip install --upgrade pip
+                pip install -r requirements.txt
+            - name: Run python script
+              run: |
+                ls -lrt
